@@ -28,7 +28,9 @@ def process_frame(frame):
     if current_time - last_generation_time >= 3: # Increase this variable if you want slower LLM outputs
         if caption and caption not in previous_captions:
             previous_captions.append(caption)
-            response = generate_response(previous_caption + " " + caption, previous_response)
+            response = generate_response(
+                f"{previous_caption} {caption}", previous_response
+            )
             print(response)
         last_generation_time = current_time
 
